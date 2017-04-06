@@ -15,12 +15,13 @@
                     <li><a href="#!">two</a></li>
                   </ul>
                 </li>
-                <?php if(isset($_SESSION["email"]))
-                {
+
+                <?php
+                if(isset($_SESSION["email"])){
                   echo '<li><a href="account.php?action=logout">Logout</a></li>';
                 }
-                else {echo '<li><a href="account.php">Login</a></li>';} ?>
-
+                else {echo '<li><a href="account.php">Login</a></li>';}
+                ?>
 
                 <li><a href="cart.php"><i class="material-icons left">shopping_cart</i>Cart</a></li>
               </ul>

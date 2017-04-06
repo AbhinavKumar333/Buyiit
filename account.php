@@ -19,7 +19,7 @@
 <body>
 
 <?php
-include 'db.php';
+include 'db.php'; include 'nav.php';
 
 if (isset($_GET["action"])){
 	if ($_GET["action"]=='logout')
@@ -49,23 +49,7 @@ if (isset($_GET["email"])){
 		die();
 	}
 }
-
 ?>
-
-  <!-- Navigation_Starts -->
-          <nav style="background-color: #6929AE;">
-            <div class="container">
-              <div class="nav-wrapper">
-                <a href='index.php' class="brand-logo"><i class="material-icons">cloud</i>Buyitt</a>
-                <ul class="right hide-on-med-and-down">
-
-									<li><a href="account.php">Account</a></li>
-                  <li><a href="cart.php"><i class="material-icons left">shopping_cart</i>Cart</a></li>
-                </ul>
-              </div>
-            </div>
-            </nav>
-  <!-- Navigation_Ends -->
 
 <div class="center-align">
   <div class="row">
@@ -90,14 +74,14 @@ if (isset($_GET["email"])){
                     <div class="row">
                         <div class="col m12">
                             <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="submit" id="action">Login</button>
+                                <button class="btn btn-large waves-effect waves-light" type="submit">Login</button>
                             </p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col m12">
                             <p class="left-align">
-                                <a href="signup.php"><button class="btn btn-large waves-effect waves-light" type="button" name="action">Register</button></a>
+                                <a href="signup.php"><button class="btn btn-large waves-effect waves-light" type="button">Register</button></a>
                             </p>
                         </div>
                     </div>
