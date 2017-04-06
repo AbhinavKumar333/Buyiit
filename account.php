@@ -17,6 +17,41 @@
 </head>
 
 <body>
+
+<?php
+include 'db.php';
+
+if (isset($_GET["action"])){
+	if ($_GET["action"]=='logout')
+			session_destroy();
+			echo "<script>window.location.href = \"account.php\";</script>";
+}
+
+if (isset($_SESSION["email"])){
+	// echo "User is Logged in!";
+	//redirect to accounts page
+	echo "<script>window.location.href = \"index.php\";</script>";
+}
+
+
+
+
+if (isset($_GET["email"])){
+	$email = $_GET["email"];
+	$pass = hash("sha256",$_GET["pass"]);
+	$result = executeDB("select * from users where email='".$email."' and password='".$pass."'");
+	if ($result->num_rows>0){
+		//perform Login
+		// echo "User authenticated!";
+		$_SESSION["email"] = $email;
+		//redirect to accounts page
+		echo "<script>window.location.href = \"index.php\";</script>";
+		die();
+	}
+}
+
+?>
+
   <!-- Navigation_Starts -->
           <nav style="background-color: #6929AE;">
             <div class="container">
@@ -24,23 +59,6 @@
                 <a href='index.php' class="brand-logo"><i class="material-icons">cloud</i>Buyitt</a>
                 <ul class="right hide-on-med-and-down">
 
-                   <!-- <li><label class="label-icon" for="search"><i class="material-icons">search</i></label></li>
-
-                   <li><input id="search" type="search" required></li> -->
-
-                  <!-- <li>
-                    <a href='#' data-activates='dropdown1'><i class="material-icons">more_vert</i></a>
-                    <ul id='dropdown1' class='dropdown-content'>
-                      <li><a href="#!">Account</a></li>
-                      <li><a href="#!">123</a></li>
-                    </ul><script>
-                    $(document).ready(function(){
-                      $('.dropdown-button').dropdown('open');
-                    }
-
-                    );
-                    </script>
-                  </li> -->
 									<li><a href="account.php">Account</a></li>
                   <li><a href="cart.php"><i class="material-icons left">shopping_cart</i>Cart</a></li>
                 </ul>
@@ -54,39 +72,32 @@
     <div class="col s12 m6" style="margin: 20px auto; float: none;">
       <h2>Login</h2>
       <div class="card">
-        <form class="col s12">
+        <form class="col s12" action="account.php" method="get">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" class="validate">
+                            <input name="email" type="email" class="validate">
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="pass" type="password" class="validate">
+                            <input name="pass" type="password" class="validate">
                             <label for="pass">Password</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s12">
-                            <p>
-                                <input type="checkbox" id="remember">
-                                <label for="remember">Remember me</label>
-                            </p>
-                        </div>
-                    </div>
+
                     <div class="divider"></div>
                     <div class="row">
                         <div class="col m12">
                             <p class="right-align">
-                                <button class="btn btn-large waves-effect waves-light" type="button" name="action">Login</button>
+                                <button class="btn btn-large waves-effect waves-light" type="submit" id="action">Login</button>
                             </p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col m12">
                             <p class="left-align">
-                                <button class="btn btn-large waves-effect waves-light" type="button" name="action">Register</button>
+                                <a href="signup.php"><button class="btn btn-large waves-effect waves-light" type="button" name="action">Register</button></a>
                             </p>
                         </div>
                     </div>

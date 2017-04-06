@@ -16,83 +16,68 @@
 </head>
 
 <body>
-  <!-- Navigation_Starts -->
-          <nav style="background-color: #6929AE;">
-            <div class="container">
-              <div class="nav-wrapper">
-                <a href='index.php' class="brand-logo"><i class="material-icons">shop</i>Buyitt</a>
-                <ul class="right hide-on-med-and-down">
+<?php include 'db.php'; include "nav.php"; ?>
 
-                   <li><label class="label-icon" for="search"><i class="material-icons">search</i></label></li>
-
-                   <li><input id="search" type="search" required></li>
-
-                  <!-- <li>
-                    <a href='#' data-activates='dropdown1'><i class="material-icons">more_vert</i></a>
-                    <ul id='dropdown1' class='dropdown-content'>
-                      <li><a href="#!">Account</a></li>
-                      <li><a href="#!">123</a></li>
-                    </ul><script>
-                    $(document).ready(function(){
-                      $('.dropdown-button').dropdown('open');
-                    }
-
-                    );
-                    </script>
-                  </li> -->
-									<li><a class='dropdown-button' href='#' data-activates='dropdown1' data-beloworigin="true">Filter</a>
-									  <ul id='dropdown1' class='dropdown-content'>
-									    <li><a href="#!">one</a></li>
-									    <li><a href="#!">two</a></li>
-									  </ul>
-        					</li>
-                  <li><a href="account.php">Account</a></li>
-                  <li><a href="cart.php"><i class="material-icons left">shopping_cart</i>Cart</a></li>
-                </ul>
-              </div>
-            </div>
-            </nav>
-  <!-- Navigation_Ends -->
-
+<!-- Items starts -->
 </br>
 </br>
-
+	<div class="container">
   <div class="row">
-    <div class="col s12 m2">
-      <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="static/images/img1.jpg">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Item_1<i class="material-icons right">more_vert</i></span>
-          <p>Desc_1</p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
-        </div>
-      </div>
-    </div>
+	<h5>Trending Phones</h5>
 
-    <div class="col s12 m2">
-      <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="static/images/img2.jpg">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Item_2<i class="material-icons right">more_vert</i></span>
-          <p>Desc_2</p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<?php
+	 initDB();
+	 $result = executeDB("select * from Items");
+	 if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()){
+			if ($row["I_type"] == "trending") {
+				echo getCard($row["I_name"],$row["I_desc"],$row["I_price"],$row["Image"]);
+			}
+		}
+	}
 
+function getCard($name,$desc,$price,$image){
+	$html = '<div class="col s12 m3">
+		<div class="card">
+			<div class="card-image waves-effect waves-block waves-light">
+				<img class="activator" src="'.$image.'">
+			</div>
+			<div class="card-content">
+				<span class="card-title activator grey-text text-darken-4">'.$name.'<i class="material-icons right">more_vert</i></span>
+				<p>'.$price.'</p>
+				<p>Buy Now</p>
+			</div>
+			<div class="card-reveal">
+				<span class="card-title grey-text text-darken-4">'.$name.'<i class="material-icons right">close</i></span>
+				<p>'.$desc.'</p>
+			</div>
+		</div>
+	</div>';
+return $html;
+}
+?>
+</div>
+</div>
 
-
+<!-- Trending Items Ends -->
+</br>
+</br>
+<div class="container">
+	<div class="row">
+		<h5>Popular Phones</h5>
+<?php
+$result = executeDB("select * from Items");
+if ($result->num_rows > 0) {
+ while($row = $result->fetch_assoc()){
+	 if ($row["I_type"] == "popular") {
+		 echo getCard($row["I_name"],$row["I_desc"],$row["I_price"],$row["Image"]);
+	 }
+ }
+}
+$dlink->close();
+?>
+</div>
+</div>
 
 
 
