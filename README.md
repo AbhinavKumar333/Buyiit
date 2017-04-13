@@ -14,13 +14,13 @@ Online Shopping Portal
 *Open the browser and type ( localhost/Buyitt/ ) to run it.
 
 #Steps for adding database:-
-*open mysql ( mysql -u root -p )
-*create a user ( create user 'newuser'@'localhost' identified by 'password'; )
-*now run this ( grant all privileges on *.* to 'newuser'@'localhost'; )
-*now create a database ( create database DB_db; )
-*exit mysql
-*run the command ( mysql -u newuser -p DB_db < dumped.sql )
-*open mysql ( mysql -u newuser -p )
-*Type use DB_db
-*show tables;
+* open mysql ( mysql -u root -p )
+* create a user ( create user 'newuser'@'localhost' identified by 'password'; )
+* now run this ( grant all privileges on *.* to 'newuser'@'localhost'; )
+* now create a database ( create database DB_db; )
+* exit mysql
+* run the command ( mysql -u newuser -p DB_db < dumped.sql )
+* open mysql ( mysql -u newuser -p )
+* Type use DB_db
+* show tables;
 * now the database is ready to be filled
