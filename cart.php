@@ -17,34 +17,73 @@
 </head>
 
 <body>
-  <!-- Navigation_Starts -->
-  <nav style="background-color: #6929AE;">
-            <div class="container">
-              <div class="nav-wrapper">
-                <a href='index.php' class="brand-logo"><i class="material-icons">cloud</i>Buyitt</a>
-                <ul class="right hide-on-med-and-down">
 
-                   <!-- <li><label class="label-icon" for="search"><i class="material-icons">search</i></label></li>
+<?php  include 'db.php'; include 'nav.php';	?>
 
-                   <li><input id="search" type="search" required></li> -->
+<div class="container" id="cartItems">
 
-                  <!-- <li>
-                    <a href='#' data-activates='dropdown1'><i class="material-icons">more_vert</i></a>
-                    <ul id='dropdown1' class='dropdown-content'>
-                      <li><a href="#!">Account</a></li>
-                      <li><a href="#!">123</a></li>
-                    </ul><script>
-                    $(document).ready(function(){
-                      $('.dropdown-button').dropdown('open');
-                    }
+<?php
+		if(isset($_SESSION['email']) && isset($_GET['pid'])){
+			$uid = executeDB("select id from users where email = '".$_SESSION['email']."'");
+			$uid = $uid->fetch_assoc(); echo $uid["id"];
+			executeDB("delete from cart where Pid = '".$_GET['pid']."' and Uid = '".$uid['id']."'");
+		}
 
-                    );
-                    </script>
-                  </li> -->
-									<li><a href="account.php">Account</a></li>
-                  <li><a href="cart.php"><i class="material-icons left">shopping_cart</i>Cart</a></li>
-                </ul>
-              </div>
-            </div>
-            </nav>
-  <!-- Navigation_Ends -->
+  if(isset($_SESSION['email'])){
+		$rid = executeDB("select id from users where email like '".$_SESSION['email']."'");
+		$r1 = $rid->fetch_assoc();
+
+		if(isset($_GET['name'])){
+	    $email = $_SESSION['email'];
+	    $name = $_GET['name'];
+	    $r2 = executeDB("select Id from Items where I_name = '".$name."'");
+	    if($rid->num_rows >0 && $r2->num_rows >0){
+	      $r2 = $r2->fetch_assoc();
+				$c = executeDB("select count from cart where Uid = '".$r1["id"]."' and Pid = '".$r2["Id"]."'");echo $_SESSION['email'];
+				$cn = $c->fetch_assoc();
+				echo $c->num_rows;
+				$count = $cn['count'] + 1;
+				if($c->num_rows > 0){echo $count;
+						executeDB("update cart set count = '".$count."' where Uid = '".$r1['id']."' and Pid='".$r2["Id"]."'");
+				}
+				else {
+					executeDB("insert into cart values('".$r1["id"]."', '".$r2["Id"]."', '".$count."')");
+				}
+    	}
+		}
+
+		$result = executeDB("select * from cart where Uid = '".$r1["id"]."'");
+		if($result->num_rows > 0){
+			while($row = $result->fetch_assoc()){
+				$r = executeDB("select * from Items where Id like '".$row["Pid"]."'");
+				while($d = $r->fetch_assoc()){
+					$name = $d["I_name"];	$price = $d["I_price"];	$desc = $d["I_desc"];	$image = $d["Image"];	$count = $row['count'];
+					echo getCollection($name,$price,$desc,$image,$count,$d["Id"]);
+				}
+			}
+		}
+	}
+
+		function getCollection($name,$price,$desc,$image,$count,$pid){
+			$html = '<ul class="collection">
+						    <li class="collection-item avatar">
+						      <img src="'.$image.'" alt="" class="circle">
+						      <span class="title">'.$name.'</span>
+						      <p>Rs. '.$price.' <br>
+						         '.$desc.'
+										 <span class="new badge" data-badge-caption="">'.$count.'</span>
+						      </p>
+						      <a href="cart.php?action=deleteItem&pid='.$pid.'" class="secondary-content" id="delete"><i class="material-icons">close</i></a>
+						    	</li>
+							 </ul>';
+
+		return $html;
+		}
+?>
+</div>
+
+
+</script>
+
+</body>
+</html>

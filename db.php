@@ -24,14 +24,24 @@ function initDB(){
            Image varchar(100) NOT NULL
            )";
   executeDB($sql);
-  $sql = "
-    create table if not exists users(
+  $sql = "create table if not exists users(
       id int(2) primary key Auto_Increment,
       name varchar(30) NOT NULL ,
       email varchar(200) NOT NULL ,
       password varchar(200) NOT NULL
       )";
       executeDB($sql);
+  $sql = "create table if not exists cart(
+    Uid int(5) NOT NULL,
+    Pid int(5) NOT NULL,
+    count int(10)
+    )";
+    executeDB($sql);
+  $sql = "create table if not exists search(
+    id int(3) primary key Auto_Increment,
+    keyword varchar(333)
+    )";
+    executeDB($sql);
 }
 
  ?>

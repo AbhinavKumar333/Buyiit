@@ -18,38 +18,36 @@
 
 <body>
 
-<?php
-include 'db.php'; include 'nav.php';
+					<?php
+					include 'db.php'; include 'nav.php';
 
-if (isset($_GET["action"])){
-	if ($_GET["action"]=='logout')
-			session_destroy();
-			echo "<script>window.location.href = \"account.php\";</script>";
-}
+					if (isset($_GET["action"])){
+						if ($_GET["action"]=='logout')
+								session_destroy();
+								echo "<script>window.location.href = \"account.php\";</script>";
+					}
 
-if (isset($_SESSION["email"])){
-	// echo "User is Logged in!";
-	//redirect to accounts page
-	echo "<script>window.location.href = \"index.php\";</script>";
-}
-
-
+					if (isset($_SESSION["email"])){
+						// echo "User is Logged in!";
+						//redirect to accounts page
+						echo "<script>window.location.href = \"index.php\";</script>";
+					}
 
 
-if (isset($_GET["email"])){
-	$email = $_GET["email"];
-	$pass = hash("sha256",$_GET["pass"]);
-	$result = executeDB("select * from users where email='".$email."' and password='".$pass."'");
-	if ($result->num_rows>0){
-		//perform Login
-		// echo "User authenticated!";
-		$_SESSION["email"] = $email;
-		//redirect to accounts page
-		echo "<script>window.location.href = \"index.php\";</script>";
-		die();
-	}
-}
-?>
+					if (isset($_GET["email"])){
+						$email = $_GET["email"];
+						$pass = hash("sha256",$_GET["pass"]);
+						$result = executeDB("select * from users where email='".$email."' and password='".$pass."'");
+						if ($result->num_rows>0){
+							//perform Login
+							// echo "User authenticated!";
+							$_SESSION["email"] = $email;
+							//redirect to accounts page
+							echo "<script>window.location.href = \"index.php\";</script>";
+							die();
+						}
+					}
+					?>
 
 <div class="center-align">
   <div class="row">
@@ -69,7 +67,6 @@ if (isset($_GET["email"])){
                             <label for="pass">Password</label>
                         </div>
                     </div>
-
                     <div class="divider"></div>
                     <div class="row">
                         <div class="col m12">
