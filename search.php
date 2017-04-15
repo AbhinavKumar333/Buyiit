@@ -30,7 +30,14 @@
      $result = executeDB("select * from Items where I_name like '%".$search."%'");
      if($result->num_rows > 0){
        while ($row = $result->fetch_assoc()) {$search = NULL;
-				//  $_SESSION['name'] = $row["I_name"];
+				 $old = executeDB("select * from search where Pid = '".$row["Id"]."'");
+				 if($old->num_rows > 0){$o = $old->fetch_assoc();
+					 $o["count"] ++;
+					 executeDB("update search set count = ".$o["count"]." where Pid = ".$row["Id"]."");
+				 }
+				 else{
+					 executeDB("insert into search values(".$row["Id"].", 1)");
+				 }
          echo getCard($row["I_name"],$row["I_desc"],$row["I_price"],$row["Image"]);
        }
      }

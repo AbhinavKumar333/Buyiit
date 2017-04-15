@@ -38,8 +38,8 @@ function initDB(){
     )";
     executeDB($sql);
   $sql = "create table if not exists search(
-    id int(3) primary key Auto_Increment,
-    keyword varchar(333)
+    Pid int(3) primary key,
+    count int(3)
     )";
     executeDB($sql);
 }

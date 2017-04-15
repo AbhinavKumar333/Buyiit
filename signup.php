@@ -34,7 +34,6 @@
 			}
 	</script>
 
-
 <?php
 include 'db.php';
 include 'nav.php';
@@ -43,6 +42,8 @@ if (isset($_GET["email"])){
 	$email = $_GET["email"];
 	$name = $_GET["username"];
 	if ($_GET["conpass"] != $_GET["pass"]){echo 'Password doesn`t match'; die();}
+	$r = executeDB("select * from users where email = '".$email."'");
+	if($r->num_rows > 0){echo "Email already exists."; die();}
 	$pass = hash("sha256",$_GET["pass"]);
 	$result = executeDB("insert into users values(0,'".$name."','".$email."','".$pass."')");
 	echo "<script>window.location.href = \"account.php?email=".$email."&pass=".$_GET["pass"]."\";</script>";
