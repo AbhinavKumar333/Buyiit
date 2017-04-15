@@ -75,9 +75,9 @@ DROP TABLE IF EXISTS `search`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `search` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
-  `keyword` varchar(333) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `Pid` int(3) NOT NULL,
+  `count` int(3) DEFAULT NULL,
+  PRIMARY KEY (`Pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -87,6 +87,7 @@ CREATE TABLE `search` (
 
 LOCK TABLES `search` WRITE;
 /*!40000 ALTER TABLE `search` DISABLE KEYS */;
+INSERT INTO `search` VALUES (1,2),(2,1);
 /*!40000 ALTER TABLE `search` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,4 +126,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-13 20:17:06
+-- Dump completed on 2017-04-15 17:29:03
