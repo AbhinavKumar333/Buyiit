@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: DB_db
 -- ------------------------------------------------------
--- Server version	5.7.17-0ubuntu0.16.04.1
+-- Server version	5.7.17-0ubuntu0.16.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,7 +30,7 @@ CREATE TABLE `Items` (
   `I_price` decimal(9,2) NOT NULL,
   `Image` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `Items` (
 
 LOCK TABLES `Items` WRITE;
 /*!40000 ALTER TABLE `Items` DISABLE KEYS */;
-INSERT INTO `Items` VALUES (1,'popular','Iphone 6s',' RAM:1 GB    Screen Size (in cm):10.16 cm (4)  Rear Camera:8 MP  Front Camera: 1.2 MP  Internal Memory:16GB',48000.00,'https://n1.sdlcdn.com/imgs/d/p/x/230X258_sharpened/Apple-iPhone-6s-32GB-Space-SDL744303941-1-35c0c.webp'),(2,'trending','Iphone 5s',' RAM:1 GB    Screen Size (in cm):10.16 cm (4)  Rear Camera:8 MP  Front Camera: 1.2 MP  Internal Memory:16GB',38000.00,'https://n1.sdlcdn.com/imgs/e/v/o/230X258_sharpened/SDL218647224_1-8621e.jpeg'),(3,'popular','Samsung Galaxy A5',' RAM:1.5 GB    Screen Size (in cm):10.16 cm (4)  Rear Camera:8 MP  Front Camera: 1.2 MP  Internal Memory:16GB',19900.00,'https://n4.sdlcdn.com/imgs/b/6/d/large/SDL093765375_11-4b73f.jpg'),(4,'trending','LeEcho L2','RAM:3 GB  Screen Size (in cm):13.97 cm (5.5)  Rear Camera:16 MP  Front Camera:8 MP  Internal Memory:32GB',11999.00,'https://n1.sdlcdn.com/imgs/e/a/x/230X258_sharpened/LeEco-Le2-X526-32GB-Grey-SDL199586080-1-7d45a.webp');
+INSERT INTO `Items` VALUES (1,'popular','Iphone 6s',' RAM:1 GB    Screen Size (in cm):10.16 cm (4)  Rear Camera:8 MP  Front Camera: 1.2 MP  Internal Memory:16GB',48000.00,'https://n1.sdlcdn.com/imgs/d/p/x/230X258_sharpened/Apple-iPhone-6s-32GB-Space-SDL744303941-1-35c0c.webp'),(2,'trending','Iphone 5s',' RAM:1 GB    Screen Size (in cm):10.16 cm (4)  Rear Camera:8 MP  Front Camera: 1.2 MP  Internal Memory:16GB',38000.00,'https://n1.sdlcdn.com/imgs/e/v/o/230X258_sharpened/SDL218647224_1-8621e.jpeg'),(3,'popular','Samsung Galaxy A5',' RAM:1.5 GB    Screen Size (in cm):10.16 cm (4)  Rear Camera:8 MP  Front Camera: 1.2 MP  Internal Memory:16GB',19900.00,'https://n4.sdlcdn.com/imgs/b/6/d/large/SDL093765375_11-4b73f.jpg'),(4,'trending','LeEcho L2','RAM:3 GB  Screen Size (in cm):13.97 cm (5.5)  Rear Camera:16 MP  Front Camera:8 MP  Internal Memory:32GB',11999.00,'https://n1.sdlcdn.com/imgs/e/a/x/230X258_sharpened/LeEco-Le2-X526-32GB-Grey-SDL199586080-1-7d45a.webp'),(5,'trending','OPPO A37 (16GB, Gray)',' RAM:2 GB  Screen Size (in cm):12.7 cm (5)  Rear Camera:8 MP  Front Camera:5 MP  Internal Memory:16GB',9990.00,'https://n1.sdlcdn.com/imgs/d/t/n/230X258_sharpened/41thskyt96l_1_1-e18b7.webp'),(6,'popular','Moto G Turbo Edition (16GB','Screen Size : 12.7 cm (5) Display  2 GB RAM and 16 GB ROM  Processor: 1.5 GHz Octa Core  Camera: 13 MP Rear & 5 MP Front  Battery: 2470 mAh',8499.00,'https://n1.sdlcdn.com/imgs/b/0/3/230X258_sharpened/Moto-G-Turbo-Edition-16GB-SDL077879817-1-8c7b0.webp'),(7,'popular','Coolpad Note 3S','RAM:3 GB  Screen Size (in cm):13.97 cm (5.5)  Rear Camera:13 MP  Front Camera:5 MP  Internal Memory:32GB',10389.00,'https://n1.sdlcdn.com/imgs/e/d/b/230X258_sharpened/Coolpad-Note-3S-32GB-Gold-SDL708880002-1-0424e.webp'),(8,'popular','HTC Desire 10 Pro',' RAM:4 GB  Screen Size (in cm):13.97 cm (5.5)  Rear Camera:20 MP  Front Camera:13 MP  Internal Memory:64GB',22990.00,'https://n3.sdlcdn.com/imgs/e/u/3/230X258_sharpened/HTC-Desire-10-Pro-64GB-SDL529154908-1-d7245.webp'),(9,'trending','Apple iPhone 7 Plus',' RAM:3 GB  Screen Size (in cm):13.94 cm (5.5)  Rear Camera:12 MP  Front Camera:7 MP  Internal Memory:32GB',57999.00,'https://n3.sdlcdn.com/imgs/c/2/9/230X258_sharpened/Apple-iPhone-7-Plus-32GB-SDL886413937-1-ac276.webp');
 /*!40000 ALTER TABLE `Items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,4 +126,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-15 17:29:03
+-- Dump completed on 2017-04-21 16:31:21
