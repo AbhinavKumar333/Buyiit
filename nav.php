@@ -12,8 +12,8 @@
 
                 <li><a class='dropdown-button' href='#' data-activates='dropdown1' data-beloworigin="true">Filter</a>
                   <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="#!">one</a></li>
-                    <li><a href="#!">two</a></li>
+                    <li><a href="search.php?action=filter&sort=asc">Price Low to High</a></li>
+                    <li><a href="search.php?action=filter&sort=desc">Price High to Low</a></li>
                   </ul>
                 </li>
 

@@ -23,6 +23,21 @@
 <div class="row">
 <?php
   include 'db.php';
+	if (isset($_GET["action"])) {
+		if ($_GET["sort"] == "asc") {
+			$sort = executeDB("select * from Items order by I_price asc");
+			while($so = $sort->fetch_assoc()){
+				echo getCard($so["I_name"],$so["I_desc"],$so["I_price"],$so["Image"]);
+			}
+		}
+			else {
+				$sort = executeDB("select * from Items order by I_price desc");
+				while($so = $sort->fetch_assoc()){
+					echo getCard($so["I_name"],$so["I_desc"],$so["I_price"],$so["Image"]);
+			}
+
+		}
+	}
    if (isset($_GET["search"])) {
      $search = $_GET["search"];
      $search = htmlspecialchars($search);echo "<h5>Search Results for :-    ".$search."</h5>";
