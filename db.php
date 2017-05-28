@@ -34,12 +34,15 @@ function initDB(){
   $sql = "create table if not exists cart(
     Uid int(5) NOT NULL,
     Pid int(5) NOT NULL,
-    count int(10)
+    count int(10),
+    foreign key(Uid) references users(id),
+    foreign key(Pid) references Items(Id)
     )";
     executeDB($sql);
   $sql = "create table if not exists search(
-    Pid int(3) primary key,
-    count int(3)
+    Pid int(3),
+    count int(3),
+    foreign key(Pid) references Items(Id)
     )";
     executeDB($sql);
 }
